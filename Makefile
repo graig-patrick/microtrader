@@ -4,10 +4,15 @@ include .env
 
 # Project variables
 PROJECT_NAME ?= microtrader
-ORG_NAME ?= dockerproductionaws
+ORG_NAME ?= maicondockertest
 REPO_NAME ?= microtrader
 TEST_REPO_NAME ?= microtrader-dev
 TEST_DIR ?= build/test-results/junit/
+
+# AWS ECR settings
+DOCKER_REGISTRY ?= 864220293752.dkr.ecr.ap-southeast-1.amazonaws.com
+AWS_ACCOUNT_ID ?= 864220293752
+DOCKER_LOGIN_EXPRESSION := eval $$(aws ecr get-login --no-include-email --region ap-southeast-1 --registry-ids $(AWS_ACCOUNT_ID))
 
 # Release settings
 export HTTP_PORT ?= 8000
